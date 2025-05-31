@@ -18,7 +18,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const price = product.price ? Number(product.price).toFixed(2) : '0.00';
   const stock = product.stock || 0;
   const imageUri = product.image 
-    ? `http://192.168.0.202:8000/storage/${product.image}`
+    ? `http://192.168.0.158:8000/storage/${product.image}`
     : 'https://via.placeholder.com/200x200?text=No+Image';
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>

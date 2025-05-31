@@ -102,7 +102,7 @@ export default function ProductDetailScreen() {
   }
 
   const imageUri = product.image 
-    ? `http://192.168.0.202:8000/storage/${product.image}`
+    ? `http://192.168.0.158:8000/storage/${product.image}`
     : 'https://via.placeholder.com/400x400?text=No+Image';
 
   const price = product.price ? Number(product.price).toFixed(2) : '0.00';
@@ -113,7 +113,7 @@ export default function ProductDetailScreen() {
       <Stack.Screen 
         options={{ 
           title: product.name,
-          headerBackTitleVisible: false,
+          headerBackVisible: true,
         }} 
       />
       

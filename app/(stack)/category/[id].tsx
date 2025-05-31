@@ -98,7 +98,7 @@ export default function CategoryDetailScreen() {
       <Stack.Screen 
         options={{ 
           title: category?.name || 'Category',
-          headerBackTitleVisible: false,
+          headerBackTitle: '',
         }} 
       />
       

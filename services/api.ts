@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://192.168.0.202:8000/api/v1'; 
+const API_BASE_URL = 'http://192.168.0.158:8000/api/v1'; 
 
 export interface Product {
   id: number;
@@ -111,10 +111,16 @@ class ApiService {
   }
 
   async register(name: string, email: string, password: string): Promise<{ user: User; token: string }> {
-    return this.makeRequest('/register', {
+    const response = await this.makeRequest('/register', {
       method: 'POST',
       body: JSON.stringify({ name, email, password }),
     });
+    
+    if (response.token) {
+      this.setToken(response.token);
+    }
+    
+    return response;
   }
 
   async logout(): Promise<void> {
@@ -124,6 +130,13 @@ class ApiService {
 
   async getProfile(): Promise<User> {
     return this.makeRequest('/profile');
+  }
+
+  async updateProfile(userData: Partial<User>): Promise<User> {
+    return this.makeRequest('/profile', {
+      method: 'PUT',
+      body: JSON.stringify(userData),
+    });
   }
 }
 
